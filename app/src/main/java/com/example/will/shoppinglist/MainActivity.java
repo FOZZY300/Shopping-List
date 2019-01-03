@@ -8,8 +8,6 @@ import android.content.Intent;
 
 public class MainActivity extends AppCompatActivity
 {
-    private static final int IS_SUCCESS = 0;
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -23,15 +21,14 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                Intent intentCreateList = NewListActivity.newIntent(MainActivity.this);
-                startActivityForResult(intentCreateList, IS_SUCCESS);
-
+                Intent intent = CreateListActivity.newIntent(MainActivity.this, 0);
+                startActivityForResult(intent, 0);
             }
         });
 
         Button viewLists;
-        viewLists = findViewById(R.id.createList);
-        viewLists.setOnClickListener(new View.OnClickListener()                                    //OnClick listener for the  Next button
+        viewLists = findViewById(R.id.viewLists);
+        viewLists.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
@@ -39,6 +36,5 @@ public class MainActivity extends AppCompatActivity
 
             }
         });
-
     }
 }

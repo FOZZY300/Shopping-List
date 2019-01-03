@@ -9,6 +9,13 @@ import android.content.Intent;
 public class MainActivity extends AppCompatActivity
 {
     @Override
+    public void onSaveInstanceState(Bundle savedInstanceState)
+    {
+        super.onSaveInstanceState(savedInstanceState);
+        //savedInstanceState.putInt(Key, value);
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);

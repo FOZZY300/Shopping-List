@@ -2,12 +2,14 @@ package com.example.will.shoppinglist;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.util.Log;
+import android.widget.TextView;
 
 public class CreateListActivity extends AppCompatActivity
 {
@@ -24,10 +26,22 @@ public class CreateListActivity extends AppCompatActivity
     }
 
     @Override
+    public void onSaveInstanceState(Bundle savedInstanceState)
+    {
+        super.onSaveInstanceState(savedInstanceState);
+        savedInstanceState.putInt("listIndex", i);
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_list);
+
+        if (savedInstanceState != null)
+        {
+            i = savedInstanceState.getInt("listIndex");
+        }
 
         final EditText itemInput = findViewById(R.id.itemInput);
 
@@ -39,9 +53,16 @@ public class CreateListActivity extends AppCompatActivity
             public void onClick(View v)
             {
                list[i] = itemInput.getText().toString();
-               Log.v(TAG, "item " + list[i]);
+               Log.v(TAG, "item = " + list[i]);
+               updateItem(i);
                i++;
             }
         });
+    }
+    private void updateItem(int index)
+    {
+        final TextView listItem;
+        listItem = (TextView) findViewById(R.id.listItem);
+        listItem.setText(list[index]);                                         //Display the first task from mTodo array in the TodoTextView
     }
 }

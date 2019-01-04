@@ -21,7 +21,7 @@ public class CreateListActivity extends AppCompatActivity
     private int i = 0;
     private ArrayList<String> listArray = new ArrayList<String>();
 
-    public static Intent newIntent(Context packageContext, int test)                           // Any calling activity would call this static method and pass the necessary
+    public static Intent newIntent(Context packageContext, int test)                                // Any calling activity would call this static method and pass the necessary
     {                                                                                               // key, value data pair in an intent object.
         Intent intent = new Intent(packageContext, CreateListActivity.class);
         intent.putExtra("test", test);
@@ -32,7 +32,7 @@ public class CreateListActivity extends AppCompatActivity
     public void onSaveInstanceState(Bundle savedInstanceState)
     {
         super.onSaveInstanceState(savedInstanceState);
-        savedInstanceState.putInt("listIndex", i);
+        savedInstanceState.putStringArrayList("saved list", listArray);
     }
 
     @Override
@@ -43,11 +43,14 @@ public class CreateListActivity extends AppCompatActivity
 
         if (savedInstanceState != null)
         {
-            i = savedInstanceState.getInt("listIndex");
+            listArray = savedInstanceState.getStringArrayList("saved list");                   //Need to putStringArrayList somewhere
         }
 
         final EditText itemInput = findViewById(R.id.itemInput);
         final ListView list = findViewById(R.id.list);
+        final ArrayAdapter<String> adapter = new ArrayAdapter<String>
+                (CreateListActivity.this, android.R.layout.simple_list_item_1, listArray);
+        list.setAdapter(adapter);
 
         Button newListItem;
         newListItem = findViewById(R.id.newListItem);
@@ -59,12 +62,20 @@ public class CreateListActivity extends AppCompatActivity
                 item = itemInput.getText().toString();
 
                 listArray.add(item);
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(CreateListActivity.this, android.R.layout.simple_list_item_1, listArray);
                 list.setAdapter(adapter);
                 itemInput.setText("");
             }
         });
 
         Button finishList;
+        finishList = findViewById(R.id.finishList);
+        finishList.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+
+            }
+        });
     }
 }

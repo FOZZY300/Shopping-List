@@ -18,13 +18,12 @@ import java.util.ArrayList;
 public class CreateListActivity extends AppCompatActivity
 {
     private String item;
-    private int i = 0;
     private ArrayList<String> listArray = new ArrayList<String>();
 
-    public static Intent newIntent(Context packageContext, int test)                                // Any calling activity would call this static method and pass the necessary
-    {                                                                                               // key, value data pair in an intent object.
+    public static Intent newIntent(Context packageContext, int test)
+    {
         Intent intent = new Intent(packageContext, CreateListActivity.class);
-        intent.putExtra("test", test);
+        //intent.putExtra("test", test);
         return intent;
     }
 
@@ -43,7 +42,7 @@ public class CreateListActivity extends AppCompatActivity
 
         if (savedInstanceState != null)
         {
-            listArray = savedInstanceState.getStringArrayList("saved list");                   //Need to putStringArrayList somewhere
+            listArray = savedInstanceState.getStringArrayList("saved list");
         }
 
         final EditText itemInput = findViewById(R.id.itemInput);
@@ -60,7 +59,6 @@ public class CreateListActivity extends AppCompatActivity
             public void onClick(View v)
             {
                 item = itemInput.getText().toString();
-
                 listArray.add(item);
                 list.setAdapter(adapter);
                 itemInput.setText("");

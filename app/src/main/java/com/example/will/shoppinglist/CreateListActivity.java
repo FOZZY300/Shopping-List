@@ -6,22 +6,25 @@ import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.util.Log;
+import android.widget.ListView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 public class CreateListActivity extends AppCompatActivity
 {
-    private String[] list = new String[20];
     private String item;
-    private String TAG = "isinputworking?";
     private int i = 0;
+    private ArrayList<String> listArray = new ArrayList<String>();
 
-    public static Intent newIntent(Context packageContext, int todoIndex)                           // Any calling activity would call this static method and pass the necessary
+    public static Intent newIntent(Context packageContext, int test)                           // Any calling activity would call this static method and pass the necessary
     {                                                                                               // key, value data pair in an intent object.
         Intent intent = new Intent(packageContext, CreateListActivity.class);
-        intent.putExtra("test", todoIndex);
+        intent.putExtra("test", test);
         return intent;
     }
 
@@ -44,6 +47,7 @@ public class CreateListActivity extends AppCompatActivity
         }
 
         final EditText itemInput = findViewById(R.id.itemInput);
+        final ListView list = findViewById(R.id.list);
 
         Button newListItem;
         newListItem = findViewById(R.id.newListItem);
@@ -52,17 +56,15 @@ public class CreateListActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-               list[i] = itemInput.getText().toString();
-               Log.v(TAG, "item = " + list[i]);
-               updateItem(i);
-               i++;
+                item = itemInput.getText().toString();
+
+                listArray.add(item);
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(CreateListActivity.this, android.R.layout.simple_list_item_1, listArray);
+                list.setAdapter(adapter);
+                itemInput.setText("");
             }
         });
-    }
-    private void updateItem(int index)
-    {
-        final TextView listItem;
-        listItem = (TextView) findViewById(R.id.listItem);
-        listItem.setText(list[index]);                                         //Display the first task from mTodo array in the TodoTextView
+
+        Button finishList;
     }
 }

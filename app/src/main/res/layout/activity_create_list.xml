@@ -9,7 +9,7 @@
     <Button
         android:id="@+id/newListItem"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:text="+"
@@ -19,7 +19,7 @@
     <Button
         android:id="@+id/finishList"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:text="Finish List"
@@ -32,14 +32,14 @@
         android:layout_height="45dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="Add Item"
+        android:text=""
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/listItem"
-        android:layout_width="250dp"
-        android:layout_height="45dp"
+    <ListView
+        android:id="@+id/list"
+        android:layout_width="350dp"
+        android:layout_height="358dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text=""

@@ -21,10 +21,8 @@ public class ListFragment extends Fragment
     private EditText itemInput;
     private Button newListItem, finishList;
     private ListView list;
-
     private String item;
     private ArrayList<String> listArray = new ArrayList<String>();
-
     private CLAmodel model;
 
     @Override
@@ -37,6 +35,7 @@ public class ListFragment extends Fragment
         super.onCreate(savedInstanceState);
         model = new CLAmodel();
         model.setAddbuttonText("Add item");
+        model.setFinishButtonText("Complete list");
         //listArray = model.getList();
     }
 
@@ -45,7 +44,6 @@ public class ListFragment extends Fragment
         super.onSaveInstanceState(savedInstanceState);
         savedInstanceState.putStringArrayList("saved list", listArray);
     }
-
 
     @Nullable
     @Override
@@ -60,6 +58,7 @@ public class ListFragment extends Fragment
         list = (ListView) view.findViewById(R.id.list);
 
         newListItem.setText(model.getAddbuttonText());
+        finishList.setText(model.getFinishButtonText());
 
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>
                 (getActivity(), simple_list_item_1, listArray);

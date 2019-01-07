@@ -28,8 +28,8 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                Intent intent = CreateListActivity.newIntent(MainActivity.this, 0);
-                startActivityForResult(intent, 0);
+                Intent intent = CreateListActivity.newIntent(MainActivity.this);
+                startActivity(intent);
             }
         });
 

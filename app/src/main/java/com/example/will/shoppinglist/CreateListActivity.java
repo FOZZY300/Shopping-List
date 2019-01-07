@@ -19,13 +19,12 @@ import java.util.ArrayList;
 
 public class CreateListActivity extends AppCompatActivity
 {
-    private String item;
-    private ArrayList<String> listArray = new ArrayList<String>();
+    //private String item;
+    //private ArrayList<String> listArray = new ArrayList<String>();
 
-    public static Intent newIntent(Context packageContext, int test)
+    public static Intent newIntent(Context packageContext)
     {
         Intent intent = new Intent(packageContext, CreateListActivity.class);
-        //intent.putExtra("test", test);
         return intent;
     }
 
@@ -33,7 +32,7 @@ public class CreateListActivity extends AppCompatActivity
     public void onSaveInstanceState(Bundle savedInstanceState)
     {
         super.onSaveInstanceState(savedInstanceState);
-        savedInstanceState.putStringArrayList("saved list", listArray);
+        //savedInstanceState.putStringArrayList("saved list", listArray);
     }
 
     @Override
@@ -45,26 +44,23 @@ public class CreateListActivity extends AppCompatActivity
         FragmentManager fm = getSupportFragmentManager();
         Fragment fragment = fm.findFragmentById(R.id.fragment_container);
 
-        if (fragment == null){
+        if (fragment == null)
+        {
             ListFragment listFragment = new ListFragment();
             fm.beginTransaction()
                     .add(R.id.fragment_container, listFragment)
                     .commit();
         }
-
+/*
         if (savedInstanceState != null)
         {
             listArray = savedInstanceState.getStringArrayList("saved list");
         }
 
-        final EditText itemInput = findViewById(R.id.itemInput);
-        final ListView list = findViewById(R.id.list);
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>
                 (CreateListActivity.this, android.R.layout.simple_list_item_1, listArray);
         list.setAdapter(adapter);
 
-        Button newListItem;
-        newListItem = findViewById(R.id.newListItem);
         newListItem.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -77,8 +73,6 @@ public class CreateListActivity extends AppCompatActivity
             }
         });
 
-        Button finishList;
-        finishList = findViewById(R.id.finishList);
         finishList.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -86,6 +80,6 @@ public class CreateListActivity extends AppCompatActivity
             {
 
             }
-        });
+        });*/
     }
 }

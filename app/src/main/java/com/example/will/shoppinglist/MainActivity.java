@@ -1,18 +1,21 @@
 package com.example.will.shoppinglist;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.content.Intent;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity
 {
+    private ArrayList<String> list;
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState)
     {
         super.onSaveInstanceState(savedInstanceState);
-        //savedInstanceState.putInt(Key, value);
     }
 
     @Override

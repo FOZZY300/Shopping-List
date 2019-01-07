@@ -19,20 +19,10 @@ import java.util.ArrayList;
 
 public class CreateListActivity extends AppCompatActivity
 {
-    //private String item;
-    //private ArrayList<String> listArray = new ArrayList<String>();
-
     public static Intent newIntent(Context packageContext)
     {
         Intent intent = new Intent(packageContext, CreateListActivity.class);
         return intent;
-    }
-
-    @Override
-    public void onSaveInstanceState(Bundle savedInstanceState)
-    {
-        super.onSaveInstanceState(savedInstanceState);
-        //savedInstanceState.putStringArrayList("saved list", listArray);
     }
 
     @Override
@@ -51,35 +41,5 @@ public class CreateListActivity extends AppCompatActivity
                     .add(R.id.fragment_container, listFragment)
                     .commit();
         }
-/*
-        if (savedInstanceState != null)
-        {
-            listArray = savedInstanceState.getStringArrayList("saved list");
-        }
-
-        final ArrayAdapter<String> adapter = new ArrayAdapter<String>
-                (CreateListActivity.this, android.R.layout.simple_list_item_1, listArray);
-        list.setAdapter(adapter);
-
-        newListItem.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                item = itemInput.getText().toString();
-                listArray.add(item);
-                list.setAdapter(adapter);
-                itemInput.setText("");
-            }
-        });
-
-        finishList.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-
-            }
-        });*/
     }
 }

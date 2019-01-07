@@ -1,5 +1,6 @@
 package com.example.will.shoppinglist;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -29,10 +30,22 @@ public class ListFragment extends Fragment
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
+        if (savedInstanceState != null)
+        {
+            listArray = savedInstanceState.getStringArrayList("saved list");
+        }
         super.onCreate(savedInstanceState);
         model = new CLAmodel();
         model.setAddbuttonText("Add item");
+        //listArray = model.getList();
     }
+
+    public void onSaveInstanceState(Bundle savedInstanceState)
+    {
+        super.onSaveInstanceState(savedInstanceState);
+        savedInstanceState.putStringArrayList("saved list", listArray);
+    }
+
 
     @Nullable
     @Override
@@ -69,10 +82,9 @@ public class ListFragment extends Fragment
             @Override
             public void onClick(View v)
             {
-
+                //model.setList(listArray);
             }
         });
-
         return view;
     }
 }
